@@ -1,0 +1,9 @@
+{
+  "name": "com.webtrufflehog",
+  "description": "Native messaging host for WebTruffleHog",
+  "path": "REPLACE_ME",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://akoofbljmjeodfmdpjndmmnifglppjdi/"
+  ]
+} 

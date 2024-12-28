@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TruffleHog</title>
+  <style>
+    body {
+      width: 400px;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background-color: #FFF9F2;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #FFB366;
+    }
+
+    .title {
+      color: #FF8C1A;
+      font-size: 20px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .stats {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .findings-list {
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .finding-card {
+      background: white;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      border-left: 4px solid #FFB366;
+    }
+
+    .finding-url {
+      color: #FF8C1A;
+      font-weight: 600;
+      margin-bottom: 8px;
+      word-break: break-all;
+    }
+
+    .finding-detail {
+      background: #FFF9F2;
+      padding: 8px;
+      border-radius: 4px;
+      font-family: monospace;
+      margin: 8px 0;
+      word-break: break-all;
+    }
+
+    .finding-type {
+      display: inline-block;
+      background: #FFE0B3;
+      color: #995200;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .no-findings {
+      text-align: center;
+      color: #666;
+      padding: 32px 16px;
+      background: white;
+      border-radius: 8px;
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #FFF9F2;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #FFB366;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #FF8C1A;
+    }
+
+    .header-stats {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .queue-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #666;
+      font-size: 14px;
+      padding: 4px 8px;
+      background: #FFE0B3;
+      border-radius: 4px;
+    }
+
+    .queue-status.active {
+      background: #FFB366;
+      color: #fff;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+
+    .processing-indicator {
+      width: 8px;
+      height: 8px;
+      background: #FF8C1A;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .queue-status.active .processing-indicator {
+      animation: pulse 1s infinite;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1 class="title">WebTruffleHog Results</h1>
+    <div class="header-stats">
+      <div class="queue-status" id="queueStatus">
+        <span class="processing-indicator"></span>
+        <span id="queueSize">Queue: 0</span>
+      </div>
+      <span class="stats" id="findingsCount"></span>
+    </div>
+  </div>
+  <div class="findings-list" id="findingsList">
+    <!-- Findings will be inserted here -->
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html> 

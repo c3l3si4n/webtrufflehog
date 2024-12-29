@@ -19,7 +19,7 @@ result_cache = {} # Store content hash -> findings mapping
 
 
 # save all stderr to a file
-sys.stderr = open('/opt/webtrufflehog/webtrufflehog.log', 'w')
+sys.stderr = open('/tmp/webtrufflehog.log', 'w')
 
 # Helper function to send messages to the extension
 def send_message(message):
@@ -143,7 +143,7 @@ def result_sender():
             if result is None:  # Poison pill
                 break
             
-            append_result(result, '/opt/webtrufflehog/results.json')
+            append_result(result, '/tmp/results.json')
             send_message(result)
             result_queue.task_done()
         except Exception as e:

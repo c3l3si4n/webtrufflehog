@@ -51,9 +51,9 @@ chrome.webRequest.onCompleted.addListener(
         h.name.toLowerCase() === 'content-type'
       )?.value || '';
       
-      if (!contentType.includes('text/') && 
-          !contentType.includes('script/') && 
-          !contentType.includes('application/')) {
+      if (contentType.includes('text/')|| 
+          contentType.includes('script/') || 
+          contentType.includes('application/')) {
         
         port.postMessage({
           id: details.requestId,
